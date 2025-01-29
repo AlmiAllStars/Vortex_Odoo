@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Acción para abrir las vistas de expansiones -->
+    <record id="action_game_expansion" model="ir.actions.act_window">
+        <field name="name">Game Expansions</field>
+        <field name="res_model">game.expansion</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Vista list -->
+    <record id="view_game_expansion_list" model="ir.ui.view">
+        <field name="name">game.expansion.list</field>
+        <field name="model">game.expansion</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="release_date"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_game_expansion_form" model="ir.ui.view">
+        <field name="name">game.expansion.form</field>
+        <field name="model">game.expansion</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Expansion Info" style="padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
+                        <field name="name"/>
+                        <field name="release_date"/>
+                    </group>
+                    <group string="Description" style="margin-top: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
+                        <field name="description" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

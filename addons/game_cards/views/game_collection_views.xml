@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Acción para abrir las vistas de colecciones -->
+    <record id="action_game_collection" model="ir.actions.act_window">
+        <field name="name">Game Collections</field>
+        <field name="res_model">game.collection</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Vista de lista -->
+    <record id="view_game_collection_list" model="ir.ui.view">
+        <field name="name">game.collection.list</field>
+        <field name="model">game.collection</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="user_id" string="Player"/>
+                <field name="card_id" string="Card"/>
+                <field name="quantity" string="Quantity"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario -->
+    <record id="view_game_collection_form" model="ir.ui.view">
+        <field name="name">game.collection.form</field>
+        <field name="model">game.collection</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Player Info" style="padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
+                        <field name="user_id"/>
+                    </group>
+                    <group string="Card Info" style="margin-top: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
+                        <field name="card_id"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

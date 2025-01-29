@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Clases -->
+    <record id="game_class_mage" model="game.class">
+        <field name="name">Mage</field>
+        <field name="description">Masters of arcane and fire magic.</field>
+    </record>
+
+    <!-- Expansiones -->
+    <record id="expansion_custom" model="game.expansion">
+        <field name="name">Custom Set</field>
+        <field name="release_date">2025-01-01</field>
+        <field name="description">Custom set for testing purposes.</field>
+    </record>
+       
+    <record id="game_class_mage" model="game.class">
+        <field name="name">Mage</field>
+        <field name="description">Masters of arcane and fire magic.</field>
+    </record>
+
+    
+    <record id="expansion_custom" model="game.expansion">
+        <field name="name">Custom Set</field>
+        <field name="release_date">2025-01-01</field>
+        <field name="description">Custom set for testing purposes.</field>
+    </record>
+
+
+ 						<!-- CARTAS -->
+
+
+					 <!-- CARTAS ADORADORES -->
+
+       
+    <record id="card_dark_pact" model="game.card">
+        <field name="name">Dark Pact</field>
+        <field name="description">Discard a random card, deal 2 damage to all creatures.</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_profane_devotion" model="game.card">
+        <field name="name">Profane Devotion</field>
+        <field name="description">Draw 2 cards.</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_abyss_breath" model="game.card">
+        <field name="name">Abyss Breath</field>
+        <field name="description">Deals 2 damage to all creatures. If any creature dies, draw a card.</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+   
+<record id="card_void_cultist" model="game.card">
+    <field name="name">Void Cultist</field>
+    <field name="description">Battle Cry - Discard a random card.</field>
+    <field name="mana_class">2</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">creature</field>
+    <field name="attack">4</field>
+    <field name="defense">3</field>
+    <field name="rarity">common</field>
+</record>
+<record id="card_dark_lunatic" model="game.card">
+    <field name="name">Dark Lunatic</field>
+    <field name="description">No special ability.</field>
+    <field name="mana_class">1</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">creature</field>
+    <field name="attack">1</field>
+    <field name="defense">3</field>
+    <field name="rarity">common</field>
+</record>
+<record id="card_fragment_abyss" model="game.card">
+    <field name="name">Fragment of the Abyss</field>
+    <field name="description">Battle Cry - Deals 2 damage to a random creature.</field>
+    <field name="mana_class">2</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">creature</field>
+    <field name="attack">3</field>
+    <field name="defense">1</field>
+    <field name="rarity">common</field>
+</record>
+<record id="card_early_summoner" model="game.card">
+    <field name="name">Early Summoner</field>
+    <field name="description">No special ability.</field>
+    <field name="mana_class">2</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">creature</field>
+    <field name="attack">2</field>
+    <field name="defense">2</field>
+    <field name="rarity">common</field>
+</record>
+<record id="card_abyssal_servant" model="game.card">
+    <field name="name">Abyssal Servant</field>
+    <field name="description">Death Rattle - It deals 1 damage to all heroes.</field>
+    <field name="mana_class">1</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">creature</field>
+    <field name="attack">1</field>
+    <field name="defense">2</field>
+    <field name="rarity">common</field>
+</record>
+<record id="card_demon_making" model="game.card">
+    <field name="name">Demon in the Making</field>
+    <field name="description">Battle Cry - Discard 2 random cards.</field>
+    <field name="mana_class">1</field>
+    <field name="mana_colorless">2</field>
+    <field name="type">creature</field>
+    <field name="attack">5</field>
+    <field name="defense">5</field>
+    <field name="rarity">common</field>
+</record>
+
+    <record id="card_avatar_insatiable_pain" model="game.card">
+        <field name="name">Avatar of Insatiable Pain</field>
+        <field name="description">When this creature attacks, it deals 2 damage to all creatures</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">3</field>
+        <field name="type">creature</field>
+        <field name="rarity">legendary</field>
+        <field name="attack">6</field>
+        <field name="defense">6</field>
+    </record>
+
+    <record id="card_prophet_crimson_ruin" model="game.card">
+        <field name="name">Prophet of Crimson Ruin</field>
+        <field name="description">Aftermath - discard a random card, then draw 2 cards</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">legendary</field>
+        <field name="attack">5</field>
+        <field name="defense">5</field>
+    </record>
+
+    <record id="card_demon_dark_pact" model="game.card">
+        <field name="name">Demon of the Dark Pact</field>
+        <field name="description">Battle Cry - Destroy an allied creature. For each point of attack deal that much damage to a random enemy</field>
+        <field name="mana_class">5</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">legendary</field>
+        <field name="attack">7</field>
+        <field name="defense">7</field>
+    </record>
+
+    <record id="card_bearer_cursed_blade" model="game.card">
+        <field name="name">Bearer of the Cursed Blade</field>
+        <field name="description">On Hit - Draw a card and discard another random card</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="rarity">legendary</field>
+        <field name="attack">4</field>
+        <field name="defense">4</field>
+    </record>
+
+    <record id="card_unholy_blood_ritual" model="game.card">
+        <field name="name">Unholy Blood Ritual</field>
+        <field name="description">Deal 3 damage to your hero and draw 2 cards</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">epic</field>
+    </record>
+
+    <record id="card_devastating_darkness" model="game.card">
+        <field name="name">Devastating Darkness</field>
+        <field name="description">Deal 3 damage to all creatures and all heroes</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">epic</field>
+    </record>
+
+    <record id="card_herald_crimson_abyss" model="game.card">
+        <field name="name">Herald of the Crimson Abyss</field>
+        <field name="description">Battle Cry - deal 2 damage to your hero and draw a card</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">4</field>
+        <field name="defense">4</field>
+    </record>
+
+    <record id="card_specter_doom" model="game.card">
+        <field name="name">Specter of Doom</field>
+        <field name="description">Aftermath - Draw 2 cards and discard a random card</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">5</field>
+        <field name="defense">4</field>
+    </record>
+
+    <record id="card_summoner_chaotic_shadows" model="game.card">
+        <field name="name">Summoner of Chaotic Shadows</field>
+        <field name="description">Taunt</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">4</field>
+        <field name="defense">5</field>
+    </record>
+
+    <record id="card_lord_eternal_chaos" model="game.card">
+        <field name="name">Lord of Eternal Chaos</field>
+        <field name="description">Charge. War Cry - it deals 3 damage to your hero and discards 2 random cards.</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="rarity">legendary</field>
+        <field name="attack">9</field>
+        <field name="defense">9</field>
+    </record>
+
+<record id="card_abyssal_creature_unique" model="game.card">
+    <field name="name">Abyssal Creature</field>
+    <field name="description">Taunt</field>
+    <field name="mana_class">4</field>
+    <field name="mana_colorless">1</field>
+    <field name="type">creature</field>
+    <field name="rarity">epic</field>
+    <field name="attack">4</field>
+    <field name="defense">6</field>
+</record>
+
+<record id="card_archdemon_oblivion_unique" model="game.card">
+    <field name="name">Archdemon of Oblivion</field>
+    <field name="description">Each time you discard a card, it deals 2 damage to a random enemy.</field>
+    <field name="mana_class">3</field>
+    <field name="mana_colorless">2</field>
+    <field name="type">creature</field>
+    <field name="rarity">epic</field>
+    <field name="attack">5</field>
+    <field name="defense">5</field>
+</record>
+
+<record id="card_desperate_minion_unique" model="game.card">
+    <field name="name">Desperate Minion</field>
+    <field name="description">No special ability.</field>
+    <field name="mana_class">1</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">creature</field>
+    <field name="rarity">common</field>
+    <field name="attack">2</field>
+    <field name="defense">1</field>
+</record>
+
+<record id="card_growing_darkness_unique" model="game.card">
+    <field name="name">Growing Darkness</field>
+    <field name="description">Discard 1 random card, Gain 3 mana this turn.</field>
+    <field name="mana_class">1</field>
+    <field name="mana_colorless">0</field>
+    <field name="type">spell</field>
+    <field name="rarity">rare</field>
+</record>
+
+<record id="card_bearer_chaos_unique" model="game.card">
+    <field name="name">Bearer of Chaos</field>
+    <field name="description">Battle Cry - Draw a card.</field>
+    <field name="mana_class">3</field>
+    <field name="mana_colorless">1</field>
+    <field name="type">creature</field>
+    <field name="attack">3</field>
+    <field name="defense">3</field>
+    <field name="rarity">epic</field>
+</record>
+
+
+
+<record id="card_specter_of_discard" model="game.card">
+<field name="name">Specter of Discard</field>
+<field name="description">After Math - If you discard a card, draw a card.</field>
+<field name="mana_class">2</field>
+<field name="mana_colorless">0</field>
+<field name="type">creature</field>
+<field name="attack">2</field>
+<field name="defense">2</field>
+<field name="rarity">common</field>
+</record>
+
+<record id="card_demon_of_the_dark_flames" model="game.card">
+<field name="name">Demon of the Dark Flames</field>
+<field name="description">When this creature is dealt damage, it deals 2 damage to all enemy creatures.</field>
+<field name="mana_class">4</field>
+<field name="mana_colorless">1</field>
+<field name="type">creature</field>
+<field name="attack">4</field>
+<field name="defense">4</field>
+<field name="rarity">epic</field>
+</record>
+
+<record id="card_flames_of_torment" model="game.card">
+<field name="name">Flames of Torment</field>
+<field name="description">Deals 2 damage to any target.</field>
+<field name="mana_class">1</field>
+<field name="mana_colorless">1</field>
+<field name="type">spell</field>
+<field name="rarity">common</field>
+</record>
+
+<record id="card_minion_of_the_crimson_pact" model="game.card">
+<field name="name">Minion of the Crimson Pact</field>
+<field name="description">Battle Cry - Deals 3 damage to your hero.</field>
+<field name="mana_class">3</field>
+<field name="mana_colorless">0</field>
+<field name="type">creature</field>
+<field name="attack">4</field>
+<field name="defense">4</field>
+<field name="rarity">common</field>
+</record>
+
+<record id="card_bearer_of_chaos" model="game.card">
+<field name="name">Bearer of Chaos</field>
+<field name="description">Battle Cry - it deals 2 damage to your hero.</field>
+<field name="mana_class">1</field>
+<field name="mana_colorless">1</field>
+<field name="type">creature</field>
+<field name="attack">3</field>
+<field name="defense">4</field>
+<field name="rarity">common</field>
+</record>
+
+<record id="card_abyssal_fanatic" model="game.card">
+<field name="name">Abyssal fanatic</field>
+<field name="description">No description.</field>
+<field name="mana_class">1</field>
+<field name="mana_colorless">0</field>
+<field name="type">creature</field>
+<field name="attack">2</field>
+<field name="defense">1</field>
+<field name="rarity">common</field>
+</record>
+
+
+
+
+						 <!-- CARTAS MAGO -->
+
+
+
+
+<record id="card_fate_weaver" model="game.card">
+<field name="name">Fate Weaver</field>
+<field name="description">Tap to return a card from your cemetery, if it is a spell it costs 4 mana less.</field>
+<field name="mana_class">3</field>
+<field name="mana_colorless">1</field>
+<field name="type">creature</field>
+<field name="rarity">legendary</field>
+<field name="attack">3</field>
+<field name="defense">6</field>
+</record>
+
+<record id="card_blizzard" model="game.card">
+<field name="name">Blizzard</field>
+<field name="description">Deal 3 damages to all enemy creatures and freeze them.</field>
+<field name="mana_class">6</field>
+<field name="mana_colorless">0</field>
+<field name="type">spell</field>
+<field name="rarity">epic</field>
+</record>
+
+<record id="card_discharge" model="game.card">
+<field name="name">Discharge</field>
+<field name="description">Deal 5 damages and draw a card.</field>
+<field name="mana_class">5</field><field name="mana_colorless">0</field>
+<field name="type">spell</field>
+<field name="rarity">epic</field>
+</record>
+
+<record id="card_crystal_cherub" model="game.card">
+<field name="name">Crystal Cherub</field>
+<field name="description">Warcry - Draw a card for each frozen enemy creature.</field>
+<field name="mana_class">2</field>
+<field name="mana_colorless">1</field>
+<field name="type">creature</field>
+<field name="rarity">epic</field>
+<field name="attack">2</field>
+<field name="defense">2</field>
+</record>
+
+<record id="card_disgrace_evoker" model="game.card">
+<field name="name">Disgrace Evoker</field>
+<field name="description">Trigger - Deal 2 damages to a random enemy when you cast a spell.</field>
+<field name="mana_class">1</field>
+<field name="mana_colorless">3</field>
+<field name="type">creature</field>
+<field name="rarity">epic</field>
+<field name="attack">3</field>
+<field name="defense">5</field>
+</record>
+
+<record id="card_frost_golem" model="game.card">
+<field name="name">Frost Golem</field>
+<field name="description">On Hit - Freeze the target.</field>
+<field name="mana_class">5</field>
+<field name="mana_colorless">1</field>
+<field name="type">creature</field>
+<field name="rarity">epic</field>
+<field name="attack">5</field>
+<field name="defense">7</field>
+</record>
+
+<record id="card_archmage_cyrendill" model="game.card">
+<field name="name">Archmage Cyrendill</field>
+<field name="description">Warcry - Freeze all enemy creatures.</field>
+<field name="mana_class">6</field>
+<field name="mana_colorless">1</field>
+<field name="type">creature</field>
+<field name="rarity">legendary</field>
+<field name="attack">6</field>
+<field name="defense">6</field>
+</record>
+
+<record id="card_stormsinger_alari" model="game.card">
+<field name="name">Stormsinger Alari</field>
+<field name="description">Aftermath - Deal 3 damages to 2 random enemy creatures.</field>
+<field name="mana_class">5</field>
+<field name="mana_colorless">0</field>
+<field name="type">creature</field>
+<field name="rarity">legendary</field>
+<field name="attack">5</field>
+<field name="defense">5</field>
+</record>
+
+<record id="card_conjurer_iskalon" model="game.card">
+<field name="name">Conjurer Iskalon</field>
+<field name="description">Trigger - Deal 2 damages when you cast a spell.</field>
+<field name="mana_class">3</field>
+<field name="mana_colorless">2</field>
+<field name="type">creature</field>
+<field name="rarity">legendary</field>
+<field name="attack">3</field>
+<field name="defense">6</field>
+</record>
+
+<record id="card_void_overseer" model="game.card">
+<field name="name">Void Overseer</field>
+<field name="description">Warcry - Draw 3 cards and discard 2, for each mage class card discarded deal 3 damages.</field>
+<field name="mana_class">7</field>
+<field name="mana_colorless">0</field>
+<field name="type">creature</field>
+<field name="rarity">legendary</field>
+<field name="attack">4</field>
+<field name="defense">7</field>
+</record>
+
+<record id="card_thunder_elemental" model="game.card">
+        <field name="name">Thunder Elemental</field>
+        <field name="description">On Hit - Deal 2 damages to adjacent enemies.</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">5</field>
+        <field name="defense">4</field>
+    </record>
+
+    <record id="card_lesser_explosion" model="game.card">
+        <field name="name">Lesser Explosion</field>
+        <field name="description">Deal 2 damages.</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+
+    <record id="card_stasis" model="game.card">
+        <field name="name">Stasis</field>
+        <field name="description">You can't die this turn.</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+
+    <record id="card_ice_nova" model="game.card">
+        <field name="name">Ice Nova</field>
+        <field name="description">Freeze 2 enemy creatures.</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+
+    <record id="card_arcane_explosion" model="game.card">
+        <field name="name">Arcane Explosion</field>
+        <field name="description">Deal 1 damage to enemy creatures.</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+
+    <record id="card_arcane_surge" model="game.card">
+        <field name="name">Arcane Surge</field>
+        <field name="description">Get 3 additional mage manas this turn.</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+
+    <record id="card_arcane_drake" model="game.card">
+        <field name="name">Arcane Drake</field>
+        <field name="description">On Hit - Cast a spell from your cemetery.</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">1</field>
+        <field name="defense">5</field>
+    </record>
+
+    <record id="card_spring_wise" model="game.card">
+        <field name="name">Spring Wise</field>
+        <field name="description">Taunt - Aftermath - Heal 2 for each spell you casted this turn.</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">2</field>
+        <field name="defense">6</field>
+    </record>
+
+    <record id="card_ether_construct" model="game.card">
+        <field name="name">Ether Construct</field>
+        <field name="description">Warcry - Draw a spell from your cemetery.</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+    </record>
+
+    <record id="card_mad_pyromancer" model="game.card">
+        <field name="name">Mad Pyromancer</field>
+        <field name="description">Warcry - Deal 2 damages to everyone.</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">creature</field>
+        <field name="rarity">epic</field>
+        <field name="attack">2</field>
+        <field name="defense">4</field>
+    </record>
+
+<record id="card_ether_summoner" model="game.card">
+        <field name="name">Ether Summoner</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">0</field>
+        <field name="attack">2</field>
+        <field name="defense">2</field>
+        <field name="description">Warcry - Gain 1 common mana this turn</field>
+    </record>
+
+    <record id="card_arcane_spectre" model="game.card">
+        <field name="name">Arcane Spectre</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">0</field>
+        <field name="attack">3</field>
+        <field name="defense">4</field>
+        <field name="description">Deathrattle - Draw a card</field>
+    </record>
+
+    <record id="card_storm_hostress" model="game.card">
+        <field name="name">Storm Hostress</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">1</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+        <field name="description">Battlecry - Deal 3 damage to an enemy</field>
+    </record>
+
+    <record id="card_ice_goblin" model="game.card">
+        <field name="name">Ice Goblin</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">2</field>
+        <field name="attack">3</field>
+        <field name="defense">1</field>
+        <field name="description">Charge</field>
+    </record>
+
+    <record id="card_arcane_familiar" model="game.card">
+        <field name="name">Arcane Familiar</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="attack">2</field>
+        <field name="defense">2</field>
+        <field name="description">Taunt</field>
+    </record>
+
+    <record id="card_hexer_assistant" model="game.card">
+        <field name="name">Hexer Assistant</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">1</field>
+        <field name="attack">3</field>
+        <field name="defense">2</field>
+        <field name="description">Deathrattle - Summon a hexer apprentice</field>
+    </record>
+
+    <record id="card_nature_illusionist" model="game.card">
+        <field name="name">Nature Illusionist</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">2</field>
+        <field name="attack">3</field>
+        <field name="defense">0</field>
+        <field name="description">No abilities</field>
+    </record>
+
+    <record id="card_blabling_scroll" model="game.card">
+        <field name="name">Blabling Scroll</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="attack">1</field>
+        <field name="defense">0</field>
+        <field name="description">No abilities</field>
+    </record>
+
+    <record id="card_hexer_apprentice" model="game.card">
+        <field name="name">Hexer Apprentice</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">0</field>
+        <field name="attack">1</field>
+        <field name="defense">2</field>
+        <field name="description">Gain 1 attack until turn ends when casting a spell</field>
+    </record>
+
+    <record id="card_fog_familiar" model="game.card">
+        <field name="name">Fog Familiar</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">1</field>
+        <field name="attack">2</field>
+        <field name="defense">3</field>
+        <field name="description">No abilities</field>
+    </record>
+
+
+
+
+
+					 <!-- CARTAS MARINES -->
+
+
+
+
+
+<record id="card_armand_steele" model="game.card">
+        <field name="name">Armand Steele</field>
+        <field name="description">Warcry - Give +2 / +2 to ally creatures</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">6</field>
+        <field name="defense">5</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_evangeline_voss" model="game.card">
+        <field name="name">Evangeline Voss</field>
+        <field name="description">Aftermath - Deal 2 damages to a random enemy creature for each creature you have</field>
+        <field name="mana_class">4</field>
+        <field name="type">creature</field>
+        <field name="attack">4</field>
+        <field name="defense">4</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_private_fooler" model="game.card">
+        <field name="name">Private Fooler</field>
+        <field name="description">Charge - Gain +2 attack for each tapped ally creature this turn</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">1</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_corporal_gravedigger" model="game.card">
+        <field name="name">Corporal Gravedigger</field>
+        <field name="description">Warcry - Summon a reckless recruit Deathrattle - Deal 2 damages for each recruit you control to all enemies</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">2</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_warzone_veteran_bran" model="game.card">
+        <field name="name">Warzone Veteran Bran</field>
+        <field name="description">Taunt - Recoil - Give +1/+1 to ally creatures</field>
+        <field name="mana_class">5</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">5</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_coordinate_operation" model="game.card">
+        <field name="name">Coordinate Operation</field>
+        <field name="description">Your creatures attack the target</field>
+        <field name="mana_class">3</field>
+        <field name="type">spell</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_unbreakable_will" model="game.card">
+        <field name="name">Unbreakable Will</field>
+        <field name="description">Give a creature invulnerability this turn</field>
+        <field name="mana_class">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_shirker_mihas" model="game.card">
+        <field name="name">Shirker Mihas</field>
+        <field name="description">Stealth</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">5</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_horizon_seeker" model="game.card">
+        <field name="name">Horizon Seeker</field>
+        <field name="description">Warcry - See your deck top 3 cards</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_brynn_engineer" model="game.card">
+        <field name="name">Brynn Engineer</field>
+        <field name="description">Warcry - Give +1 attack to ally creatures this turn</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_mud_sapper" model="game.card">
+        <field name="name">Mud Sapper</field>
+        <field name="description">Warcry - Deal 3 damage to an enemy</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">4</field>
+        <field name="defense">5</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_sharpshooter" model="game.card">
+        <field name="name">Sharpshooter</field>
+        <field name="description">Deal 2 damage to enemy hero when a creature dies</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">0</field>
+        <field name="type">creature</field>
+        <field name="attack">4</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_quartermaster" model="game.card">
+        <field name="name">Quartermaster</field>
+        <field name="description">Warcry - Give +1/+1 to ally creatures</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_healer_mage" model="game.card">
+        <field name="name">Healer Mage</field>
+        <field name="description">Aftermath - heal 1 to ally creatures</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">2</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_assault_trooper" model="game.card">
+        <field name="name">Assault Trooper</field>
+        <field name="description">Charge</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">5</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_snipe" model="game.card">
+        <field name="name">Snipe</field>
+        <field name="description">Deal 3 damages</field>
+        <field name="mana_class">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_logistics" model="game.card">
+        <field name="name">Logistics</field>
+        <field name="description">Draw 2 cards</field>
+        <field name="mana_class">3</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_retreat" model="game.card">
+        <field name="name">Retreat</field>
+        <field name="description">Return a creature to your hand, it costs 2 mana less</field>
+        <field name="mana_class">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_charge" model="game.card">
+        <field name="name">Charge</field>
+        <field name="description">Give charge to a creature</field>
+        <field name="mana_class">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_stab" model="game.card">
+        <field name="name">Stab</field>
+        <field name="description">Deal 2 damages</field>
+        <field name="mana_class">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_abuser_sergeant" model="game.card">
+        <field name="name">Abuser Sergeant</field>
+        <field name="description">Deal 1 damage give +2 attack</field>
+        <field name="mana_class">0</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_infantry_recruit" model="game.card">
+        <field name="name">Infantry Recruit</field>
+        <field name="mana_class">2</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_marine_recruit" model="game.card">
+        <field name="name">Marine Recruit</field>
+        <field name="mana_class">1</field>
+        <field name="type">creature</field>
+        <field name="attack">1</field>
+        <field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_shadow" model="game.card">
+        <field name="name">Shadow</field>
+        <field name="description">Stealth</field>
+        <field name="mana_class">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">1</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_shooter_recruit" model="game.card">
+        <field name="name">Shooter Recruit</field>
+        <field name="mana_class">1</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">1</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_reckless_recruit" model="game.card">
+        <field name="name">Reckless Recruit</field>
+        <field name="mana_class">1</field>
+        <field name="type">creature</field>
+        <field name="attack">1</field>
+        <field name="defense">1</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_mercenary" model="game.card">
+        <field name="name">Mercenary</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">3</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_north_barbarian" model="game.card">
+        <field name="name">North Barbarian</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_mountain_giant" model="game.card">
+        <field name="name">Mountain Giant</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">4</field>
+        <field name="defense">5</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_desert_serpent" model="game.card">
+        <field name="name">Desert Serpent</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+        <field name="rarity">common</field>
+    </record>
+
+
+
+						<!-- CARTAS DRUIDA -->
+
+
+
+
+
+<record id="card_guardian_of_eternity" model="game.card">
+        <field name="name">Guardian of Eternity</field>
+        <field name="description">When Guardian of Verdant Eternity enters the battlefield, summon two Living Spirit 1/2 with Taunt</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">6</field>
+        <field name="defense">6</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_sabertooth" model="game.card">
+        <field name="name">Sabertooth</field>
+        <field name="description">At the beginning of your turn, restore 3 health and give +1/+1 to one random allied creatures</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">5</field>
+        <field name="defense">5</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_ancient_oak_colossus" model="game.card">
+        <field name="name">Ancient Oak Colossus</field>
+        <field name="description">Last Breath - Draw 2 cards</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">6</field>
+        <field name="defense">8</field>
+        <field name="rarity">legendary</field>
+    </record>
+    <record id="card_spirits_of_the_eternal_glade" model="game.card">
+        <field name="name">Spirits of the Eternal Glade</field>
+        <field name="description">When Spirits of the Eternal Glade enters the battlefield, summon one Living Spirit 1/2 with Taunt</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">4</field>
+        <field name="defense">4</field>
+        <field name="rarity">legendary</field>
+    
+</record>
+	<record id="card_mother_of_the_primal" model="game.card">
+        <field name="name">Mother of the Primal Forest</field>
+        <field name="description">Death Rattle - Summon a 1/2 Living sapling. If you control 3 or more, creatures you control gain + 1/1 </field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">3</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">7</field>
+        <field name="rarity">legendary</field>
+    </record>
+
+
+    <record id="card_force_of_nature" model="game.card">
+        <field name="name">Force of Nature</field>
+        <field name="description">Summon three 2/2 Forest Saplings with Charge. At the end of the turn, destroy those Saplings</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_wild_growth" model="game.card">
+        <field name="name">Wild Growth</field>
+        <field name="description">All allied creatures gain +2/+2 until the end of the turn</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_avatar_of_the_ancient_forest" model="game.card">
+        <field name="name">Avatar of the Ancient Forest</field>
+        <field name="description">When Avatar of the Ancient Forest enters the battlefield, all allied creatures restore 2 health</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">6</field>
+        <field name="defense">5</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_verdant_beast" model="game.card">
+        <field name="name">Verdant Beast</field>
+        <field name="description">Battle Cry - Summon one Living Spirit 1/2 with Taunt</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">5</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_tree_of_eternity" model="game.card">
+        <field name="name">Tree of Eternity</field>
+        <field name="description">Taunt</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">8</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_protector_druid" model="game.card">
+        <field name="name">Protector Druid</field>
+        <field name="description">War Cry - Give +1/+1 to all allied creatures</field>
+        <field name="mana_class">3</field>
+        <field name="type">creature</field>
+	<field name="attack">2</field>
+        <field name="defense">1</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_spirit_of_the_living_oak" model="game.card">
+        <field name="name">Spirit of the Living Oak</field>
+        <field name="description">Taunt</field>
+        <field name="mana_class">3</field>
+        <field name="type">creature</field>
+        <field name="attack">2</field>
+        <field name="defense">5</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_stag_of_the_golden_glade" model="game.card">
+        <field name="name">Stag of the Golden Glade</field>
+        <field name="description">When Stag of the Golden Glade attacks, you gain 1 health for each allied creature</field>
+        <field name="mana_class">2</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_sapling_guardian" model="game.card">
+        <field name="name">Sapling Guardian</field>
+        <field name="description">At the end of your turn, summon one Living Spirit 1/2 with Taunt</field>
+        <field name="mana_class">4</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+        <field name="attack">4</field>
+        <field name="defense">4</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_deep_forest_arachnid" model="game.card">
+        <field name="name">Deep Forest Arachnid</field>
+        <field name="mana_class">3</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">5</field>
+        <field name="defense">6</field>
+        <field name="rarity">epic</field>
+    </record>
+    <record id="card_piercing_roots" model="game.card">
+        <field name="name">Piercing Roots</field>
+        <field name="description">Deal 2 damage to an enemy creature</field>
+        <field name="mana_class">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_earths_nourishment" model="game.card">
+        <field name="name">Earth's Nourishment</field>
+        <field name="description">Draw 2 cards. If you control at least 3 creatures, draw an additional card</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_verdant_sprouts" model="game.card">
+        <field name="name">Verdant Sprouts</field>
+        <field name="description">summon two Living Spirit 1/2 with Taunt</field>
+        <field name="mana_class">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_ivy_burst" model="game.card">
+        <field name="name">Ivy Burst</field>
+        <field name="description">Deal 1 damage to all enemy creatures</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_wild_regeneration" model="game.card">
+        <field name="name">Wild Regeneration</field>
+        <field name="description">Restore 5 health to any target</field>
+        <field name="mana_class">2</field>
+        <field name="type">spell</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_living_sapling" model="game.card">
+        <field name="name">Living Sapling</field>
+        <field name="description">Taunt</field>
+        <field name="mana_class">1</field>
+        <field name="type">creature</field>
+        <field name="attack">1</field>
+        <field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_deepwood_wolf" model="game.card">
+        <field name="name">Deepwood Wolf</field>
+        <field name="description">Charge</field>
+        <field name="mana_class">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+	<field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_blossom_sage" model="game.card">
+        <field name="name">Blossom Sage</field>
+        <field name="description">War Cry - you gain 2 life</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+	<field name="attack">2</field>
+	<field name="defense">2</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_verdant_wildcat" model="game.card">
+        <field name="name">Verdant Wildcat</field>
+        <field name="description">When Verdant Wildcat attacks, draw a card</field>
+        <field name="mana_class">1</field>
+        <field name="type">creature</field>
+	<field name="attack">2</field>
+        <field name="defense">1</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_little_forest_spirit" model="game.card">
+        <field name="name">Little Forest Spirit</field>
+        <field name="description">When you summon a creature, Little Forest Spirit gets +1 attack until end of turn</field>
+        <field name="mana_class">1</field>
+        <field name="type">creature</field>
+        <field name="attack">1</field>
+	<field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_protective_sapling" model="game.card">
+        <field name="name">Protective Sapling</field>
+        <field name="description">Taunt</field>
+        <field name="mana_class">2</field>
+        <field name="type">creature</field>
+	<field name="attack">2</field>
+        <field name="defense">4</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_duskglen_fairy" model="game.card">
+        <field name="name">Duskglen Fairy</field>
+        <field name="description">War Cry - When Duskglen Fairy enters the battlefield, your hero gains 2 lives</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_wildlife_stag" model="game.card">
+        <field name="name">Wildlife Stag</field>
+        <field name="description">Death Rattle - Gain 3 live</field>
+        <field name="mana_class">2</field>
+        <field name="type">creature</field>
+        <field name="attack">3</field>
+	<field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_sprouting_arachnid" model="game.card">
+        <field name="name">Sprouting Arachnid</field>
+        <field name="description">When Sprouting Arachnid takes damage, summon one Living Spirit 1/2 with Taunt</field>
+        <field name="mana_class">1</field>
+        <field name="mana_colorless">1</field>
+        <field name="type">creature</field>
+	<field name="attack">2</field>
+        <field name="defense">3</field>
+        <field name="rarity">common</field>
+    </record>
+    <record id="card_green_glade_mystic" model="game.card">
+        <field name="name">Green Glade Mystic</field>
+        <field name="description">War Cry - Generate 1 additional colorless mana this turn</field>
+        <field name="mana_class">2</field>
+        <field name="type">creature</field>
+	<field name="attack">2</field>
+        <field name="defense">2</field>
+        <field name="rarity">common</field>
+    </record>
+
+
+
+
+				
+
+					<!-- CARTAS COMUNES -->
+
+
+<record id="card_spirit_of_knowledge" model="game.card">
+        <field name="name">Spirit of Knowledge</field>
+        <field name="description">Deathrattle: Draw a card</field>
+        <field name="mana_colorless">4</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">3</field>
+        <field name="defense">4</field>
+    </record>
+    <record id="card_foot_soldier" model="game.card">
+        <field name="name">Foot Soldier</field>
+        <field name="description">no abilities</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">2</field>
+        <field name="defense">2</field>
+    </record>
+    <record id="card_ander_champion_of_complaints" model="game.card">
+        <field name="name">Ander Champion of Complaints</field>
+        <field name="description">¿Cuando va a ser el examen? El reto a sido muy duro</field>
+        <field name="mana_colorless">4</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">4</field>
+        <field name="defense">5</field>
+    </record>
+    <record id="card_swift_wolf" model="game.card">
+        <field name="name">Swift Wolf</field>
+        <field name="description">Charge</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">3</field>
+        <field name="defense">1</field>
+    </record>
+    <record id="card_lightning_rider" model="game.card">
+        <field name="name">Lightning Rider</field>
+        <field name="description">Charge</field>
+        <field name="mana_colorless">2</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">2</field>
+        <field name="defense">2</field>
+    </record>
+    <record id="card_oak_guardian" model="game.card">
+        <field name="name">Oak Guardian</field>
+        <field name="description">Taunt</field>
+        <field name="mana_colorless">3</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">2</field>
+        <field name="defense">4</field>
+    </record>
+    <record id="card_mother_of_the_primal_forest" model="game.card">
+        <field name="name">Mother of the Primal Forest</field>
+        <field name="description">Taunt</field>
+        <field name="mana_colorless">3</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+    </record>
+    <record id="card_shadow_stalker" model="game.card">
+        <field name="name">Shadow Stalker</field>
+        <field name="description">Stealth</field>
+        <field name="mana_colorless">4</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+    </record>
+    <record id="card_fallen_sage" model="game.card">
+        <field name="name">Fallen Sage</field>
+        <field name="description">Deathrattle: Draw a card</field>
+        <field name="mana_colorless">4</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">3</field>
+        <field name="defense">3</field>
+    </record>
+	<record id="card_steath_of_the_forest" model="game.card">
+        <field name="name">Steath of the Forest</field>
+        <field name="description">Steath</field>
+        <field name="mana_colorless">3</field>
+        <field name="type">creature</field>
+        <field name="rarity">common</field>
+        <field name="attack">2</field>
+        <field name="defense">1</field>
+    </record>
+
+
+
+
+</odoo>

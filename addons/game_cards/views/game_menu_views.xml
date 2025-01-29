@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menú principal -->
+    <menuitem id="menu_game_management" name="Game Management" sequence="10"/>
+
+    <!-- Submenú para gestión de cartas -->
+    <menuitem id="menu_game_cards" name="Cards Management" parent="menu_game_management" sequence="10"/>
+    <menuitem id="menu_game_card" name="Cards" parent="menu_game_cards" action="action_game_card" sequence="10"/>
+    <menuitem id="menu_game_expansion" name="Expansions" parent="menu_game_cards" action="action_game_expansion" sequence="20"/>
+
+
+    <menuitem id="menu_game_players" name="Players Management" parent="menu_game_management" sequence="20"/>
+    <menuitem id="menu_game_user" name="Users" parent="menu_game_players" action="action_game_user" sequence="10"/>
+    <menuitem id="menu_game_collection" name="Collections" parent="menu_game_players" action="action_game_collection" sequence="20"/>
+    <menuitem id="menu_game_deck" name="Decks" parent="menu_game_players" action="action_game_deck" sequence="30"/>
+    <menuitem id="menu_game_statistics" name="Statistics" parent="menu_game_players" action="action_game_statistics" sequence="40"/>
+</odoo>
