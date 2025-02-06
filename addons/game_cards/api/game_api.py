@@ -489,3 +489,30 @@ class GameApi(http.Controller):
 
         except Exception as e:
             return {'error': str(e)}
+
+    @http.route('/api/decks/<int:deck_id>/cards', type='http', auth='public', methods=['GET'], csrf=False)
+    def get_deck_cards(self, deck_id):
+        try:
+            # Verificar que el mazo exista
+            deck = request.env['game.deck'].sudo().browse(deck_id)
+            if not deck.exists():
+                return http.Response(json.dumps({'error': f"Deck with ID {deck_id} not found."}),
+                                    content_type='application/json', status=404)
+
+            # Obtener las cartas del mazo
+            cards_data = [{
+                'id': card.id,
+                'name': card.name,
+                'rarity': card.rarity,
+                'type': card.type,
+                'mana_class': card.mana_class,
+                'mana_colorless': card.mana_colorless
+            } for card in deck.cards]
+
+            # Respuesta con las cartas del mazo
+            response_data = json.dumps({'success': True, 'deck_name': deck.name, 'cards': cards_data})
+            return http.Response(response_data, content_type='application/json', status=200)
+
+        except Exception as e:
+            return http.Response(json.dumps({'error': str(e)}),
+                                content_type='application/json', status=500)
