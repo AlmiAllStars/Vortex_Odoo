@@ -14,4 +14,22 @@
     <menuitem id="menu_game_collection" name="Collections" parent="menu_game_players" action="action_game_collection" sequence="20"/>
     <menuitem id="menu_game_deck" name="Decks" parent="menu_game_players" action="action_game_deck" sequence="30"/>
     <menuitem id="menu_game_statistics" name="Statistics" parent="menu_game_players" action="action_game_statistics" sequence="40"/>
+    <!-- Acción para mostrar la lista de efectos de cartas -->
+    <record id="action_game_card_effect" model="ir.actions.act_window">
+        <field name="name">Card Effects</field>
+        <field name="res_model">game.card.effect</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p>
+                Here you can see all the card effects and their details.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú para ver todos los efectos de cartas -->
+    <menuitem id="menu_game_card_effect"
+              name="Card Effects"
+              parent="menu_game_management"
+              action="action_game_card_effect"
+              sequence="30"/>
 </odoo>

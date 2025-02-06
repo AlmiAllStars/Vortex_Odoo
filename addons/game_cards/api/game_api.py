@@ -1,5 +1,6 @@
 from odoo import http
 from odoo.http import request
+import requests
 import random
 import json
 
@@ -105,7 +106,6 @@ class GameApi(http.Controller):
             # Polvo arcano ganado según rareza
             dust_values = {
                 'common': 20,
-                'rare': 40,
                 'epic': 200,
                 'legendary': 400
             }
@@ -233,10 +233,13 @@ class GameApi(http.Controller):
             user = request.env['game.user'].sudo().browse(user_id)
             if not user.exists():
                 return http.Response(json.dumps({'error': f"User with ID {user_id} not found."}),
-                                     content_type='application/json', status=404)
+                                    content_type='application/json', status=404)
 
             # Obtener las cartas del usuario desde game_collection
             user_cards = request.env['game.collection'].sudo().search([('user_id', '=', user_id)])
+
+            # Ordenar las cartas por el campo relacionado game_card.id
+            sorted_user_cards = sorted(user_cards, key=lambda card: card.card_id.id)
 
             # Formatear los datos de las cartas
             cards_data = [{
@@ -245,11 +248,244 @@ class GameApi(http.Controller):
                 'rarity': card.card_id.rarity,
                 'type': card.card_id.type,
                 'quantity': card.quantity
-            } for card in user_cards]
+            } for card in sorted_user_cards]
 
             response_data = json.dumps({'success': True, 'cards': cards_data})
             return http.Response(response_data, content_type='application/json', status=200)
 
         except Exception as e:
             return http.Response(json.dumps({'error': str(e)}),
+                                content_type='application/json', status=500)
+
+
+
+
+    @http.route('/api/users/update', type='json', auth='public', methods=['POST'], csrf=False)
+    def update_user(self, **kwargs):
+        try:
+            data = json.loads(request.httprequest.data)
+            required_fields = ['user_id', 'updates']
+            missing = [field for field in required_fields if field not in data]
+            if missing:
+                return {'error': f"Missing fields: {', '.join(missing)}"}
+
+            user = request.env['game.user'].sudo().browse(data['user_id'])
+            if not user.exists():
+                return {'error': f"User with ID {data['user_id']} not found."}
+
+            updates = data['updates']
+            valid_user_fields = ['currency_gold', 'currency_dust']
+            valid_stats_fields = ['games_played', 'games_won', 'games_lost', 'ranking', 'win_rate']
+
+            updated_fields = {}
+
+            # Actualizar campos en game.user (currency_gold, currency_dust)
+            user_updates = {key: value for key, value in updates.items() if key in valid_user_fields}
+            if user_updates:
+                for field, value in user_updates.items():
+                    if isinstance(value, str) and (value.startswith('+') or value.startswith('-')):
+                        increment = int(value)
+                        current_value = getattr(user, field, 0)
+                        user_updates[field] = current_value + increment
+                    elif isinstance(value, int):
+                        user_updates[field] = value
+                    else:
+                        return {'error': f"Invalid value for field {field}: {value}"}
+                user.sudo().write(user_updates)
+                updated_fields.update(user_updates)
+
+            # Actualizar o crear campos en game.statistics (games_won, games_lost, etc.)
+            stats_updates = {key: value for key, value in updates.items() if key in valid_stats_fields}
+            if stats_updates:
+                stats = request.env['game.statistics'].sudo().search([('user_id', '=', user.id)], limit=1)
+                if not stats:
+                    # Crear un registro de estadísticas si no existe
+                    stats = request.env['game.statistics'].sudo().create({
+                        'user_id': user.id,
+                        'games_played': 0,
+                        'games_won': 0,
+                        'games_lost': 0,
+                        'ranking': 0,
+                        'win_rate': 0
+                    })
+
+                for field, value in stats_updates.items():
+                    if isinstance(value, str) and (value.startswith('+') or value.startswith('-')):
+                        increment = int(value)
+                        current_value = getattr(stats, field, 0)
+                        stats_updates[field] = current_value + increment
+                    elif isinstance(value, int):
+                        stats_updates[field] = value
+                    else:
+                        return {'error': f"Invalid value for field {field}: {value}"}
+                stats.sudo().write(stats_updates)
+                updated_fields.update(stats_updates)
+
+            return {
+                "success": True,
+                "updated_fields": updated_fields
+            }
+
+        except Exception as e:
+            return {"error": str(e)}
+
+    @http.route('/api/users/<int:user_id>/decks', type='http', auth='public', methods=['GET'], csrf=False)
+    def get_user_decks(self, user_id):
+        try:
+            user = request.env['game.user'].sudo().browse(user_id)
+            if not user.exists():
+                return http.Response(json.dumps({'error': f"User with ID {user_id} not found."}),
+                                    content_type='application/json', status=404)
+
+            # Obtener los decks del usuario desde game_deck
+            user_decks = request.env['game.deck'].sudo().search([('user_id', '=', user_id)])
+
+            # Formatear los datos de los decks
+            decks_data = [{
+                'id': deck.id,
+                'name': deck.name,
+                'class': deck.class_id.name if deck.class_id else None,
+                'total_mana': deck.total_mana,
+            } for deck in user_decks]
+
+            response_data = json.dumps({'success': True, 'decks': decks_data})
+            return http.Response(response_data, content_type='application/json', status=200)
+
+        except Exception as e:
+            return http.Response(json.dumps({'error': str(e)}),
+                                content_type='application/json', status=500)
+
+    @http.route('/api/users/<int:user_id>/info', type='http', auth='public', methods=['GET'], csrf=False)
+    def get_user_info(self, user_id):
+        try:
+            # Buscar al usuario en la base de datos
+            user = request.env['game.user'].sudo().browse(user_id)
+            if not user.exists():
+                return http.Response(json.dumps({'error': f"User with ID {user_id} not found."}),
+                                     content_type='application/json', status=404)
+
+            # Formatear los datos del usuario
+            user_info = {
+                'id': user.id,
+                'name': user.name,
+                'gold': user.currency_gold,
+                'dust': user.currency_dust,
+                'selected_deck': user.selected_deck  # Ahora devuelve el número seleccionado (1-6)
+            }
+
+            response_data = json.dumps({'success': True, 'user_info': user_info})
+            return http.Response(response_data, content_type='application/json', status=200)
+
+        except Exception as e:
+            return http.Response(json.dumps({'error': str(e)}),
                                  content_type='application/json', status=500)
+
+    @http.route('/api/users/<int:user_id>/select-deck/<int:deck_option>', type='http', auth='public', methods=['POST'], csrf=False)
+    def select_user_deck(self, user_id, deck_option):
+        try:
+            # Verificar que la opción sea válida (1-6)
+            if str(deck_option) not in ['1', '2', '3', '4', '5', '6']:
+                return http.Response(json.dumps({'error': 'Invalid deck option. Must be between 1 and 6.'}),
+                                     content_type='application/json', status=400)
+
+            # Buscar al usuario
+            user = request.env['game.user'].sudo().browse(user_id)
+            if not user.exists():
+                return http.Response(json.dumps({'error': f"User with ID {user_id} not found."}),
+                                     content_type='application/json', status=404)
+
+            # Asignar el valor de selected_deck
+            user.sudo().write({'selected_deck': str(deck_option)})
+
+            response_data = json.dumps({'success': True, 'message': f"Deck {deck_option} selected for user {user.name}."})
+            return http.Response(response_data, content_type='application/json', status=200)
+
+        except Exception as e:
+            return http.Response(json.dumps({'error': str(e)}),
+                                 content_type='application/json', status=500)
+
+    @http.route('/api/login', type='json', auth='public', methods=['POST'], csrf=False)
+    def user_login(self, **kwargs):
+        try:
+            data = json.loads(request.httprequest.data)
+            required_fields = ['db', 'login', 'password']
+            missing = [field for field in required_fields if field not in data]
+            if missing:
+                return {'error': f"Missing fields: {', '.join(missing)}"}
+
+            # Llamada a la API de autenticación de Odoo
+            odoo_auth_url = "http://34.196.147.37:8069/web/session/authenticate"
+            auth_payload = {
+                "jsonrpc": "2.0",
+                "params": {
+                    "db": data['db'],
+                    "login": data['login'],
+                    "password": data['password']
+                }
+            }
+            headers = {"Content-Type": "application/json"}
+            response = requests.post(odoo_auth_url, json=auth_payload, headers=headers)
+
+            # Verificar si la respuesta de Odoo es exitosa
+            if response.status_code != 200:
+                return {'error': 'Failed to authenticate with Odoo.'}
+
+            auth_result = response.json()
+            if 'result' not in auth_result or not auth_result['result'].get('uid'):
+                return {'error': 'Invalid credentials or authentication failed.'}
+
+            # Obtener el nombre del usuario autenticado
+            user_name = auth_result['result']['name']
+
+            # Buscar el usuario en game.user por nombre
+            user = request.env['game.user'].sudo().search([('name', '=', user_name)], limit=1)
+            if not user:
+                return {'error': f"User with name {user_name} not found in local database."}
+
+            return {'success': True, 'user_id': user.id}
+
+        except Exception as e:
+            return {'error': str(e)}
+
+
+    @http.route('/api/users/<int:user_id>/create_deck', type='json', auth='public', methods=['POST'], csrf=False)
+    def create_deck(self, user_id, **kwargs):
+        try:
+            data = json.loads(request.httprequest.data)
+            required_fields = ['name', 'class_id', 'cards']
+            missing = [field for field in required_fields if field not in data]
+            if missing:
+                return {'error': f"Missing fields: {', '.join(missing)}"}
+
+            # Verificar que el usuario existe
+            user = request.env['game.user'].sudo().browse(user_id)
+            if not user.exists():
+                return {'error': f"User with ID {user_id} not found."}
+
+            # Verificar que las cartas no excedan el límite de 20 en total
+            if len(data['cards']) > 20:
+                return {'error': 'A deck cannot contain more than 20 cards in total.'}
+
+            # Verificar que no haya más de 2 copias de una misma carta
+            for card in data['cards']:
+                if card.get('quantity', 1) > 2:
+                    return {'error': f"Card ID {card['card_id']} exceeds the maximum quantity of 2 per deck."}
+
+            # Verificar que todas las cartas sean válidas
+            card_ids = [card['card_id'] for card in data['cards']]
+            valid_cards = request.env['game.card'].sudo().search([('id', 'in', card_ids)])
+            if len(valid_cards) != len(card_ids):
+                return {'error': 'Some card IDs are invalid or do not exist.'}
+
+            # Crear el deck
+            deck = request.env['game.deck'].sudo().create({
+                'user_id': user_id,
+                'name': data['name'],
+                'class_id': data['class_id'],
+                'cards': [(6, 0, card_ids)]  # Usar la relación Many2many para asociar las cartas
+            })
+
+            return {'success': True, 'deck_id': deck.id, 'message': 'Deck created successfully.'}
+
+        except Exception as e:
+            return {'error': str(e)}
