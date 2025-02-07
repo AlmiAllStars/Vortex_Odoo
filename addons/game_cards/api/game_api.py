@@ -468,8 +468,8 @@ class GameApi(http.Controller):
 
             # Verificar que no haya más de 2 copias de una misma carta
             for card in data['cards']:
-                if card.get('quantity', 1) > 2:
-                    return {'error': f"Card ID {card['card_id']} exceeds the maximum quantity of 2 per deck."}
+                if card.get('quantity', 1) > 3:
+                    return {'error': f"Card ID {card['card_id']} exceeds the maximum quantity of 3 per deck."}
 
             # Verificar que todas las cartas sean válidas
             card_ids = [card['card_id'] for card in data['cards']]
