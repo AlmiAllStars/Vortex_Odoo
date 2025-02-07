@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_game_card_user,access_game_card_user,model_game_card,base.group_user,1,1,1,1
+access_game_class_user,access_game_class_user,model_game_class,base.group_user,1,1,1,1
+access_game_effect_user,access_game_effect_user,model_game_effect,base.group_user,1,1,1,1
+access_game_expansion_user,access_game_expansion_user,model_game_expansion,base.group_user,1,1,1,1
+access_game_collection_user,access_game_collection_user,model_game_collection,base.group_user,1,1,1,1
+access_game_deck_user,access_game_deck_user,model_game_deck,base.group_user,1,1,1,1
+access_game_user_user,access_game_user_user,model_game_user,base.group_user,1,1,1,1
+access_game_statistics_user,access_game_statistics_user,model_game_statistics,base.group_user,1,1,1,1
