@@ -12,7 +12,6 @@ class GameCard(models.Model):
     defense = fields.Integer(string='Defense', default=0)
     rarity = fields.Selection([
         ('common', 'Common'),
-        ('rare', 'Rare'),
         ('epic', 'Epic'),
         ('legendary', 'Legendary')
     ], string='Rarity', default='common')
