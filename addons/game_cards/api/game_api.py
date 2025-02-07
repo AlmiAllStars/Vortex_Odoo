@@ -370,7 +370,7 @@ class GameApi(http.Controller):
                 'name': user.name,
                 'gold': user.currency_gold,
                 'dust': user.currency_dust,
-                'selected_deck': user.selected_deck  # Ahora devuelve el número seleccionado (1-6)
+                'selected_deck': user.selected_deck if user.selected_deck else -1
             }
 
             response_data = json.dumps({'success': True, 'user_info': user_info})
