@@ -264,7 +264,7 @@
     <field name="mana_class">1</field>
     <field name="mana_colorless">0</field>
     <field name="type">spell</field>
-    <field name="rarity">rare</field>
+    <field name="rarity">common</field>
 </record>
 
 <record id="card_bearer_chaos_unique" model="game.card">
