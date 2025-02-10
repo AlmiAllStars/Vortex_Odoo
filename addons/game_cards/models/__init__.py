@@ -8,3 +8,4 @@ from . import game_card_effect
 from . import game_deck
 from . import game_statistics
 from . import game_user
+from . import game_card_deck_rel

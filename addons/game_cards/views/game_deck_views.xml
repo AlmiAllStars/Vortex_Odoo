@@ -34,11 +34,10 @@
                         <field name="class_id"/>
                     </group>
                     <group string="Cards in Deck" style="margin-top: 20px;">
-                        <field name="cards" widget="many2many_tags">
-                            <list>
-                                <field name="name"/>
-                                <field name="mana_class"/>
-                                <field name="mana_colorless"/>
+                        <field name="card_rel_ids">
+                            <list editable="bottom">
+                                <field name="game_card_id"/>
+                                <field name="quantity"/>
                             </list>
                         </field>
                     </group>

@@ -496,23 +496,78 @@ class GameApi(http.Controller):
             # Verificar que el mazo exista
             deck = request.env['game.deck'].sudo().browse(deck_id)
             if not deck.exists():
-                return http.Response(json.dumps({'error': f"Deck with ID {deck_id} not found."}),
-                                    content_type='application/json', status=404)
+                return http.Response(
+                    json.dumps({'error': f"Deck with ID {deck_id} not found."}),
+                    content_type='application/json',
+                    status=404
+                )
 
-            # Obtener las cartas del mazo
+            # Obtener las cartas y cantidades del mazo desde el modelo intermedio
             cards_data = [{
-                'id': card.id,
-                'name': card.name,
-                'rarity': card.rarity,
-                'type': card.type,
-                'mana_class': card.mana_class,
-                'mana_colorless': card.mana_colorless
-            } for card in deck.cards]
+                'id': rel.game_card_id.id,
+                'name': rel.game_card_id.name,
+                'rarity': rel.game_card_id.rarity,
+                'type': rel.game_card_id.type,
+                'mana_class': rel.game_card_id.mana_class,
+                'mana_colorless': rel.game_card_id.mana_colorless,
+                'quantity': rel.quantity
+            } for rel in deck.card_rel_ids]
 
             # Respuesta con las cartas del mazo
-            response_data = json.dumps({'success': True, 'deck_name': deck.name, 'cards': cards_data})
+            response_data = json.dumps({
+                'success': True,
+                'deck_name': deck.name,
+                'cards': cards_data
+            })
             return http.Response(response_data, content_type='application/json', status=200)
 
         except Exception as e:
-            return http.Response(json.dumps({'error': str(e)}),
-                                content_type='application/json', status=500)
+            return http.Response(
+                json.dumps({'error': str(e)}),
+                content_type='application/json',
+                status=500
+            )
+    @http.route('/api/decks/<int:deck_id>/edit', type='json', auth='public', methods=['POST'], csrf=False)
+    def edit_deck(self, deck_id, **kwargs):
+        try:
+            data = json.loads(request.httprequest.data)
+            required_fields = ['cards']
+            missing = [field for field in required_fields if field not in data]
+            if missing:
+                return {'error': f"Missing fields: {', '.join(missing)}"}
+
+            # Verificar que el mazo existe
+            deck = request.env['game.deck'].sudo().browse(deck_id)
+            if not deck.exists():
+                return {'error': f"Deck with ID {deck_id} not found."}
+
+            # Verificar que las cartas no excedan el límite de 20 en total
+            if len(data['cards']) > 20:
+                return {'error': 'A deck cannot contain more than 20 cards in total.'}
+
+            # Verificar que no haya más de 3 copias de una misma carta
+            for card in data['cards']:
+                if card.get('quantity', 1) > 3:
+                    return {'error': f"Card ID {card['card_id']} exceeds the maximum quantity of 3 per deck."}
+
+            # Verificar que todas las cartas sean válidas
+            card_ids = [card['card_id'] for card in data['cards']]
+            valid_cards = request.env['game.card'].sudo().search([('id', 'in', card_ids)])
+            if len(valid_cards) != len(card_ids):
+                return {'error': 'Some card IDs are invalid or do not exist.'}
+
+            # Limpiar las cartas actuales del mazo
+            deck.card_rel_ids.unlink()
+
+            # Agregar las nuevas cartas al mazo
+            for card in data['cards']:
+                request.env['game.card.deck.rel'].sudo().create({
+                    'game_deck_id': deck_id,
+                    'game_card_id': card['card_id'],
+                    'quantity': card.get('quantity', 1)
+                })
+
+            return {'success': True, 'deck_id': deck.id, 'message': 'Deck updated successfully.'}
+
+        except Exception as e:
+            return {'error': str(e)}

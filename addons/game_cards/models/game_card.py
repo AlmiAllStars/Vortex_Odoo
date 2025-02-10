@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+# Archivo: models/game_card.py
+from odoo import models, fields
 
 class GameCard(models.Model):
     _name = 'game.card'
@@ -24,3 +25,6 @@ class GameCard(models.Model):
     image = fields.Binary(string='Card Image')
     card_effects = fields.One2many('game.card.effect', 'card_id', string='Card Effects')
     expansion_id = fields.Many2one('game.expansion', string='Expansion')
+
+    # Relación con el modelo intermedio
+    deck_rel_ids = fields.One2many('game.card.deck.rel', 'game_card_id', string='Decks containing this card')

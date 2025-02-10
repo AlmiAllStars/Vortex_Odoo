@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-        <!-- Acción para abrir las vistas de cartas -->
+    <!-- Acción para abrir las vistas de cartas -->
     <record id="action_game_card" model="ir.actions.act_window">
         <field name="name">Game Cards</field>
         <field name="res_model">game.card</field>
         <field name="view_mode">kanban,list,form</field>
     </record>
+
     <!-- Menú principal para cartas -->
     <menuitem id="menu_game_card_root" name="Game Cards" sequence="10"/>
     <menuitem id="menu_game_card" name="Cards" parent="menu_game_card_root" action="action_game_card" sequence="10"/>
-
-
 
     <!-- Vista Kanban -->
     <record id="view_game_card_kanban" model="ir.ui.view">
@@ -98,6 +97,17 @@
                             </list>
                         </field>
                     </group>
+                    <!-- Nueva pestaña para mostrar en qué mazos está la carta -->
+                    <notebook>
+                        <page string="Decks">
+                            <field name="deck_rel_ids">
+                                <list>
+                                    <field name="game_deck_id"/>
+                                    <field name="quantity"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
