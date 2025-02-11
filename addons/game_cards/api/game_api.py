@@ -527,6 +527,7 @@ class GameApi(http.Controller):
                 content_type='application/json',
                 status=500
             )
+        
     @http.route('/api/decks/<int:deck_id>/edit', type='json', auth='public', methods=['POST'], csrf=False)
     def edit_deck(self, deck_id, **kwargs):
         try:
